@@ -16,13 +16,13 @@ restService.get('/', function (req, res) {
 restService.get('/events', function (req, res) {
     // console.log("req",req);
     const app = new DialogflowApp({ req, res });
-    return req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
-        console.log("body in get", body);
-        return res.json({
-            speech: 'speech',
-            displayText: 'speech',
-            source: 'webhook-echo-sample'
-        });
+    res.json({
+        speech: 'speech',
+        displayText: 'speech',
+        source: 'webhook-echo-sample'
+    });
+    // return req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
+    //     console.log("body in get", body);
         // app.buildCarousel()
         //     .addItems([
         //         app.buildOptionItem(SELECTION_KEY_ONE,
@@ -32,7 +32,7 @@ restService.get('/events', function (req, res) {
         //             ['synonym of KEY_TWO 1', 'synonym of KEY_TWO 2'])
         //             .setTitle('Number two'),
         //     ])
-    });
+    // });
     // return res.json({
     //     speech: speech,
     //     displayText: speech,
