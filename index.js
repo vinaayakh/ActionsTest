@@ -14,13 +14,13 @@ restService.get('/', function (req, res) {
 })
 
 restService.get('/events', function (req, res) {
-    console.log(req);
+    console.log("req",req);
     const app = new DialogflowApp({ req, res });
-    return req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
-        // console.log(err);
+    req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
+        // console.log(err);    
         // console.log(response);
-        console.log(body);
-        res.json(body);
+        console.log("body",body);
+        return res.json(body);
         // app.buildCarousel()
         //     .addItems([
         //         app.buildOptionItem(SELECTION_KEY_ONE,
