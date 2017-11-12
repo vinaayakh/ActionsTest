@@ -21,7 +21,7 @@ restService.get('/events', function (req, res) {
         displayText: 'speech',
         source: 'webhook-echo-sample'
     });
-    // return req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
+    req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
     //     console.log("body in get", body);
         // app.buildCarousel()
         //     .addItems([
@@ -32,12 +32,12 @@ restService.get('/events', function (req, res) {
         //             ['synonym of KEY_TWO 1', 'synonym of KEY_TWO 2'])
         //             .setTitle('Number two'),
         //     ])
-    // });
-    // return res.json({
-    //     speech: speech,
-    //     displayText: speech,
-    //     source: 'webhook-echo-sample'
-    // });
+        return res.json({
+            speech: speech,
+            displayText: speech,
+            source: 'webhook-echo-sample'
+        });
+    });
 });
 
 restService.listen((process.env.PORT || 8000), function () {
