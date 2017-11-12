@@ -9,13 +9,18 @@ restService.use(bodyParser.urlencoded({
 }));
 
 restService.use(bodyParser.json());
+restService.get('/', function (req, res) {
+    console.log('start');
+})
 
 restService.get('/events', function (req, res) {
+    console.log(req);
     const app = new DialogflowApp({ req, res });
     req.get('https://www.yepdesk.com/rest/v1/events', function (err, response, body) {
         console.log(err);
         console.log(response);
         console.log(body);
+        return res.json(body);
         app.buildCarousel()
             .addItems([
                 app.buildOptionItem(SELECTION_KEY_ONE,
@@ -26,11 +31,11 @@ restService.get('/events', function (req, res) {
                     .setTitle('Number two'),
             ])
     });
-    return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'webhook-echo-sample'
-    });
+    // return res.json({
+    //     speech: speech,
+    //     displayText: speech,
+    //     source: 'webhook-echo-sample'
+    // });
 });
 
 restService.listen((process.env.PORT || 8000), function () {
